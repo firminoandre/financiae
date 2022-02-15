@@ -1,4 +1,61 @@
 import { createApp } from 'vue'
+import { createWebHistory, createRouter } from "vue-router";
 import App from './App.vue'
+import VueSweetalert2 from 'vue-sweetalert2';
+//views
+import Dashboard from './logged/Dashboard'
+import Categories from './logged/Categories'
+import Home from './Home'
+import Login from './Login'
+import Register from './Register'
 
-createApp(App).mount('#app')
+//css
+import './assets/tailwind.css'
+import 'sweetalert2/dist/sweetalert2.min.css';
+
+//middlewares
+import Guard from './middleware/auth';
+
+
+
+
+const routes = [
+    {
+      name: "Dashboard",
+      path: "/dashboard",
+      component: Dashboard,
+      beforeEnter: Guard.auth
+    },
+    {
+      name: "Categorias",
+      path: "/categories",
+      component: Categories,
+      beforeEnter: Guard.auth
+    },
+    {
+      name: "Home",
+      path: "/",
+      component: Home,
+    },
+    {
+      name: "Login",
+      path: "/entrar",
+      component: Login,
+    },
+    {
+      name: "Registrar",
+      path: "/registro",
+      component: Register,
+    },
+  ];
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
+
+
+const app = createApp(App)
+app.use(router);
+app.mount('#app');
+app.use(VueSweetalert2);
