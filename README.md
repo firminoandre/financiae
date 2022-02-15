@@ -19,8 +19,8 @@ Estão aqui as tecnologias utilizadas no front-end do projeto
 
 ## Vue Libs
 
-* js-cookie
-* SweetAlert
+* js-cookie 🍪
+* SweetAlert 
 * VueX (feature)
 * Vue Router
 * Axios
@@ -81,7 +81,7 @@ As principais features do projeto são:
   ## Versionamento
 
   1.0.0.0
-  - O projeto ainda NÃO está concluído como um MVP (existem funções básicas ainda não implementadas)
+  - O projeto ainda **-NÃO-** está concluído como um MVP (existem funções básicas ainda não implementadas)
 
 
   ## Autor
