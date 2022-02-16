@@ -96,7 +96,7 @@ export default {
 		async getCategories(){
 			
 			try {
-				const response = await axios.get(`http://127.0.0.1:8000/api/categorias/${1}`, {
+				const response = await axios.get(`http://127.0.0.1:8000/api/categorias/${this.user_id}`, {
 					
 					headers: {
 						Authorization: 'Bearer ' + Cookies.get('token_') 
@@ -173,9 +173,9 @@ export default {
 		},
 	},
 
-	mounted(){
+	async mounted(){
+        await this.getProfile();
         this.getCategories();
-        this.getProfile();
     }
 	
 }
