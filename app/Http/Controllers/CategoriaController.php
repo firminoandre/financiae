@@ -77,9 +77,18 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, Request $request)
     {
-        //
+        $this->validate($request, [
+            'categoria' => 'required|max:255',
+        ]);
+        $categoria = Categoria::findOrFail( $request->id );                
+        $categoria->categoria = $request->input('categoria');
+        
+
+        if( $categoria->save() ){
+            return new CategoriaResource( $categoria );
+        }
     }
 
     /**
@@ -91,5 +100,8 @@ class CategoriaController extends Controller
     public function destroy($id)
     {
         //
+        $categoria = Categoria::find($id);
+        $categoria->delete();
+        return response()->json('categoria deleted!');
     }
 }

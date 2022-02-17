@@ -29,6 +29,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     //rota de logout
     Route::post('/logout', [App\Http\Controllers\API\AuthController::class, 'logout']);
+    //rota cadastro de categoria
     Route::post('/categoria', [CategoriaController::class, 'store']);
+    //rota get de categorias
     Route::get('/categorias/{id}', [CategoriaController::class, 'index']);
+    //update
+    Route::put('/categoria/{id}', [CategoriaController::class, 'update']);
+
+    //delete
+    Route::delete('/categoriadelete/{id}', [CategoriaController::class, 'destroy']);
 });
