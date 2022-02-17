@@ -1,6 +1,29 @@
 <template>
 <div class="">
 <Navbar/>
+<div v-show="modal" class="min-w-screen h-screen animated fadeIn faster  fixed  left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover"   id="modal-id"><div class="absolute bg-black opacity-80 inset-0 z-0"></div>
+    <div class="w-full  max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg  bg-white ">
+      <!--content-->
+      <div class="">
+        <!--body-->
+        <div class="text-center p-5 flex-auto justify-center">
+                
+				
+                <svg class="w-6 h-6 w-16 h-16 flex items-center text-red-500 mx-auto" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
+                        <h2 class="text-xl font-bold py-4 ">Editar</h2>
+                        <label>Nome da categoria</label>
+						<input v-model="nameModal" id="firstname" type="text" placeholder="Categoria" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-coolGray-700 dark:text-coolGray-900">
+        </div>
+        <!--footer-->
+        <div class="p-3  mt-2 text-center space-x-4 md:block">
+            <button @click="this.modal = false"  class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100">
+                Cancelar
+            </button>
+            <button @click="updateCategorie" class="mb-2 md:mb-0 bg-green-600 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-700">Editar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 	<section class="p-6 dark:bg-coolGray-800 dark:text-coolGray-50">
 		<form @submit.stop.prevent="cadCategories" action="" class="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid">
 			<fieldset class="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-coolGray-900">
@@ -13,6 +36,7 @@
 					<div class="col-span-full sm:col-span-3">
 						<label for="firstname" class="text-sm text-white">Nome da Categoria</label>
 						<input v-model="categoria" id="firstname" type="text" placeholder="Digite o nome" class="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-coolGray-700 dark:text-coolGray-900">
+						
 					</div>
 					<AppButton>
                         Cadastrar
@@ -43,7 +67,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr v-for="categorie in categories" :key="categorie.id" class="border-b border-opacity-20 dark:border-coolGray-700 dark:bg-coolGray-900">
+					<tr v-for="	categorie in categories" :key="categorie.id" class="border-b border-opacity-20 dark:border-coolGray-700 dark:bg-coolGray-900">
 						<td class="p-3">
 							<p>{{categorie.id}}</p>
 						</td>
@@ -58,7 +82,7 @@
 							<a @click="delCategorie(categorie.id)" class="px-3 py-1 font-semibold rounded-md dark:bg-violet-400 bg-red-800 cursor-pointer">
 								<span>Excluir</span>
 							</a>
-							<a @click="getCategories" class="px-3 ml-5 py-1 font-semibold rounded-md dark:bg-violet-400 cursor-pointer bg-blue-800">
+							<a @click="editModal(categorie.categoria, categorie.id)" class="px-3 ml-5 py-1 font-semibold rounded-md dark:bg-violet-400 cursor-pointer bg-blue-800">
 								<span>Editar</span>
 							</a>
 						</td>
@@ -67,12 +91,14 @@
 			</table>
 		</div>
 	</div>
+	
 <Footer/>
 </div>
 </template>
 
 <script>
 import AppButton from '../components/Ui/AppButton';
+
 import Navbar from '../components/Navbar.vue'
 import Footer from '../components/Footer.vue'
 import axios from 'axios'
@@ -81,17 +107,26 @@ export default {
     components:{
         Navbar,
         Footer,
-        AppButton
+        AppButton,
+	
     },
     data() {
         return {
 			categoria: '',
 			categories: [],
-			user_id: ''
+			user_id: '',
+			modal: false,
+			nameModal: '',
+			idModal: ''
 		}
     },
 
 	methods: {
+		editModal(name, id){
+			this.modal = true;
+			this.nameModal = name;
+			this.idModal = id
+		},
 		async getCategories(){
 			
 			try {
@@ -179,6 +214,31 @@ export default {
 				}).then(() => {
 					let i = this.categories.map(data => data.id).indexOf(id);
 					this.categories.splice(i, 1)
+				});
+				// Success 🎉
+				console.log(response)
+			} catch (error) {
+				// Error 😨
+				if (error.response) {
+					console.log(error.response.data);
+					
+				} else if (error.request) {
+					console.log(error.request);
+				} else {
+					console.log('Error', error.message);
+				}
+				console.log(error);
+			}
+		},
+
+		async updateCategorie(){
+			try {
+				const id = this.idModal
+				const payload = this.nameModal	
+				const response = await axios.put(`http://127.0.0.1:8000/api/categoria/${id}`, payload, {
+					headers: {
+						Authorization: 'Bearer ' + Cookies.get('token_') 
+					}
 				});
 				// Success 🎉
 				console.log(response)
