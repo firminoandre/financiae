@@ -192,6 +192,8 @@ export default {
 				});
 				// Success 🎉
 				console.log(response)
+				this.getCategories();
+				this.categoria = '';
 			} catch (error) {
 				// Error 😨
 				if (error.response) {

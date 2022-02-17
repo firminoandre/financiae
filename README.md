@@ -2,18 +2,20 @@
 
 
 ## Financiaê
-Este é um projeto que visa a criação de um dashboard para o usuário poder organizar suas entradas e saídas . 📈
+This is a project that aims to create a dashboard for the user to be able to organize their inputs and outputs. 📈
 
+## Links
+  - Repository: https://github.com/firminoandre/financiae
 
-## Tecnologias 
+## Technologies 
 
-Estão aqui as tecnologias utilizadas no front-end do projeto
+Here are the technologies used in the front-end of the project
 
 * VueJS 3
 * TailwindCSS 2.2.17
 * API Laravel (branch back-end)
 
-## Serviços usados
+## Used services
 
 * Github
 
@@ -26,67 +28,64 @@ Estão aqui as tecnologias utilizadas no front-end do projeto
 * Axios
 
 
-## Iniciando
+## Starting
 
 * Dependency
   - VueJS 3
 
-* Instalação do projeto.
+* Project installation.
   - npm install
   
-* Execução do projeto.
+* Project execution.
   - npm run serve
   
-* Compilação para produção.
+* Compilation for production.
   - npm run build
   
 
 
-## Como usar
+## How to use
 
-### 1 - Quando você entrar no projeto, irá ver a página inicial.
+### 1 - When you enter the project, you will see the home page.
 
 ![Homepage image](https://raw.githubusercontent.com/firminoandre/financiae/front-end/public/readme/home.png)
 
-### 2 - Tela de login para caso você ja tenha uma conta cadastrada.
+### 2 - Login screen if you already have a registered account.
 
 ![Login](https://raw.githubusercontent.com/firminoandre/financiae/front-end/public/readme/login.png)
 
-### 3 - Ou simplesmente crie sua conta.
+### 3 - Or simply create your account.
 
 ![Sign up](https://raw.githubusercontent.com/firminoandre/financiae/front-end/public/readme/cadastro.png)
 
-### 4 - Este é o Dashboard!
+### 4 - This is a dashboard!
 
 ![Dashboard](https://raw.githubusercontent.com/firminoandre/financiae/front-end/public/readme/dash.png)
 
 
-### 5 - Esta é a parte das suas categorias.
+### 5 - This is the part of your categories.
 
 ![Dashboard](https://raw.githubusercontent.com/firminoandre/financiae/front-end/public/readme/categorias.png)
 
 
 ## Features
 
-As principais features do projeto são:
- - Dashboard com gráficos.
- - Front-end swich para cores.
- - Ajustes de layout.
- - Impressão de finanças.
+The main features of the project are:
+ - Dashboard with graphics.
+ - Front-end switch for colors.
+ - Layout adjustments.
+ - Financial printing.
 
 
-## Links
-  - Respositório: https://github.com/firminoandre/financiae
-
-  ## Versionamento
+  ## Version
 
   1.0.0.0
-  - O projeto ainda **-NÃO-** está concluído como um MVP (existem funções básicas ainda não implementadas)
+  - The project is still **-NOT-** completed as an MVP (there are basic functions not yet implemented)
 
 
-  ## Autor
+  ## Author
 
   * **Firmino Andre** 
 
-  Por favor, siga-me no github e junte-se conosco!
-  Obrigado por sua visita e bom coding!
+  Please follow me on github and join us!
+  Thanks for your visit and good coding!
