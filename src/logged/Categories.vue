@@ -6,6 +6,7 @@
       <!--content-->
       <div class="">
         <!--body-->
+		
         <div class="text-center p-5 flex-auto justify-center">
                 
 				
@@ -21,6 +22,7 @@
             </button>
             <button @click="updateCategorie" class="mb-2 md:mb-0 bg-green-600 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-700">Editar</button>
         </div>
+		
       </div>
     </div>
   </div>
@@ -123,7 +125,7 @@ export default {
 
 	methods: {
 		editModal(name, id){
-			this.modal = true;
+			this.modal = true;			
 			this.nameModal = name;
 			this.idModal = id
 		},
@@ -233,25 +235,32 @@ export default {
 
 		async updateCategorie(){
 			try {
-				const id = this.idModal
-				const payload = this.nameModal	
-				const response = await axios.put(`http://127.0.0.1:8000/api/categoria/${id}`, payload, {
+				const id = this.idModal 
+				/// bota asssimmm ou ASSIM
+				const response = await axios.put(`http://localhost:8000/api/categoria/${id}`, 
+				{
+					categoria: this.nameModal
+				}, {
 					headers: {
 						Authorization: 'Bearer ' + Cookies.get('token_') 
 					}
 				});
 				// Success 🎉
 				console.log(response)
+				this.getCategories();
+				this.modal = false;
 			} catch (error) {
 				// Error 😨
 				if (error.response) {
 					console.log(error.response.data);
+					console.log(this.nameModal)
 					
 				} else if (error.request) {
 					console.log(error.request);
 				} else {
 					console.log('Error', error.message);
 				}
+				//alert(error.message); // pega a desgraca la do erro e alerta
 				console.log(error);
 			}
 		},
