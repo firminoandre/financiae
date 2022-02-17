@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import { createWebHistory, createRouter } from "vue-router";
+import { createWebHistory, createRouter,  } from "vue-router";
 import App from './App.vue'
 import VueSweetalert2 from 'vue-sweetalert2';
 //views
