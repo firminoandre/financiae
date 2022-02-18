@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\TransacoesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/profile', function(Request $request) {
         return auth()->user();
     });
-
+//---------------------------rotas de categorias------------------------------------------//
     //rota de logout
     Route::post('/logout', [App\Http\Controllers\API\AuthController::class, 'logout']);
     //rota cadastro de categoria
@@ -35,7 +36,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/categorias/{id}', [CategoriaController::class, 'index']);
     //update
     Route::put('/categoria/{id}', [CategoriaController::class, 'update']);
-
     //delete
     Route::delete('/categoriadelete/{id}', [CategoriaController::class, 'destroy']);
+//---------------------------------------------------------------------------------------//
+
+//---------------------------rotas de transacoes------------------------------------------//
+
+    Route::post('/transacoes', [TransacoesController::class, 'store']);
+
+    Route::get('/transacoes/{id}', [TransacoesController::class, 'index']);
 });
