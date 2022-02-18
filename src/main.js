@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import { createWebHistory, createRouter,  } from "vue-router";
 import App from './App.vue'
 import VueSweetalert2 from 'vue-sweetalert2';
+import money from 'vuejs-money'
 //views
 import Dashboard from './logged/Dashboard'
 import Categories from './logged/Categories'
@@ -59,3 +60,4 @@ const app = createApp(App)
 app.use(router);
 app.mount('#app');
 app.use(VueSweetalert2);
+app.use(money);

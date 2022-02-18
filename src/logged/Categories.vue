@@ -1,7 +1,7 @@
 <template>
 <div class="">
 <Navbar/>
-<div v-show="modal" class="min-w-screen h-screen animated fadeIn faster  fixed  left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover"   id="modal-id"><div class="absolute bg-black opacity-80 inset-0 z-0"></div>
+<div v-show="modal" class="min-w-screen h-screenanimated fadeIn faster fixed left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover"   id="modal-id"><div class="absolute bg-black opacity-80 inset-0 z-0"></div>
     <div class="w-full  max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg  bg-white ">
       <!--content-->
       <div class="">
@@ -47,7 +47,9 @@
 			</fieldset>
 			
 		</form>
+		
 	</section>
+	
     <div class="container p-2 mx-auto sm:p-4 text-white">
 		<h2 class="mb-4 text-2xl font-semibold leading-tight">Categorias encontradas</h2>
 		<div class="overflow-x-auto">
@@ -67,7 +69,15 @@
 						<th class="p-3">Ações</th>
 						
 					</tr>
+					
 				</thead>
+				<div v-if="loading" class="flex justify-center items-center mt-5">
+					<div class="bg-white flex space-x-2 p-5 rounded-full justify-center items-center">
+						<div class="bg-blue-600 p-2  w-4 h-4 rounded-full animate-bounce blue-circle"></div>
+						<div class="bg-green-600 p-2 w-4 h-4 rounded-full animate-bounce green-circle"></div>
+						<div class="bg-red-600 p-2  w-4 h-4 rounded-full animate-bounce red-circle"></div>
+					</div>
+				</div>
 				<tbody>
 					<tr v-for="	categorie in categories" :key="categorie.id" class="border-b border-opacity-20 dark:border-coolGray-700 dark:bg-coolGray-900">
 						<td class="p-3">
@@ -119,7 +129,8 @@ export default {
 			user_id: '',
 			modal: false,
 			nameModal: '',
-			idModal: ''
+			idModal: '',
+			loading: true
 		}
     },
 
@@ -132,6 +143,7 @@ export default {
 		async getCategories(){
 			
 			try {
+
 				const response = await axios.get(`http://127.0.0.1:8000/api/categorias/${this.user_id}`, {
 					
 					headers: {
@@ -139,7 +151,8 @@ export default {
 					}
 				});
 				// Success 🎉
-				this.categories = response.data.data
+				this.categories = response.data.data;
+				this.loading = false;
 			} catch (error) {
 				// Error 😨
 				if (error.response) {
@@ -277,3 +290,15 @@ export default {
 	
 }
 </script>
+
+<style>
+	.blue-circle{
+		animation-delay: 0.1s;
+	}
+	.green-circle{
+		animation-delay: 0.2s;
+	}
+	.red-circle{
+		animation-delay: 0.3s;
+	}
+</style>
