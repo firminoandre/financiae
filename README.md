@@ -60,7 +60,7 @@ Here are the technologies used in the front-end of the project
 
 ### 4 - This is a dashboard!
 
-![Dashboard](https://raw.githubusercontent.com/firminoandre/financiae/front-end/public/readme/dash.png)
+![Dashboard](https://raw.githubusercontent.com/firminoandre/financiae/front-end/public/readme/dash2.png)
 
 
 ### 5 - This is the part of your categories.
