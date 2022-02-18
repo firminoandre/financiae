@@ -57,7 +57,7 @@
             <AppFormSelect :list="categories" />
           </div>
         </div>
-          <div v-if="loading" class="flex justify-center items-center mt-24">
+          <div v-if="loading" class="flex justify-center items-center mt-12">
 					<div class="bg-gray-700 flex space-x-2 p-5 rounded-full justify-center items-center">
 						<div class="bg-green-300 p-2  w-4 h-4 rounded-full animate-bounce blue-circle"></div>
 						<div class="bg-green-300 p-2 w-4 h-4 rounded-full animate-bounce green-circle"></div>

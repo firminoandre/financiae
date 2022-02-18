@@ -3,6 +3,7 @@ import { createWebHistory, createRouter,  } from "vue-router";
 import App from './App.vue'
 import VueSweetalert2 from 'vue-sweetalert2';
 import money from 'vuejs-money'
+import Notification from 'notiwind'
 //views
 import Dashboard from './logged/Dashboard'
 import Categories from './logged/Categories'
@@ -61,3 +62,4 @@ app.use(router);
 app.mount('#app');
 app.use(VueSweetalert2);
 app.use(money);
+app.use(Notification);

@@ -1,6 +1,7 @@
 <template>
 <div class="">
 <Navbar/>
+
 <div v-show="modal" class="min-w-screen h-screenanimated fadeIn faster fixed left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover"   id="modal-id"><div class="absolute bg-black opacity-80 inset-0 z-0"></div>
     <div class="w-full  max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg  bg-white ">
       <!--content-->
@@ -67,17 +68,9 @@
 						<th class="p-3">Usuário</th>
 						<th class="p-3">Categoria</th>
 						<th class="p-3">Ações</th>
-						
 					</tr>
 					
 				</thead>
-				<div v-if="loading" class="flex justify-center items-center mt-5">
-					<div class="bg-white flex space-x-2 p-5 rounded-full justify-center items-center">
-						<div class="bg-blue-600 p-2  w-4 h-4 rounded-full animate-bounce blue-circle"></div>
-						<div class="bg-green-600 p-2 w-4 h-4 rounded-full animate-bounce green-circle"></div>
-						<div class="bg-red-600 p-2  w-4 h-4 rounded-full animate-bounce red-circle"></div>
-					</div>
-				</div>
 				<tbody>
 					<tr v-for="	categorie in categories" :key="categorie.id" class="border-b border-opacity-20 dark:border-coolGray-700 dark:bg-coolGray-900">
 						<td class="p-3">
@@ -101,6 +94,13 @@
 					</tr>
 				</tbody>
 			</table>
+			<div v-if="loading" class="flex justify-center items-center mt-5">
+					<div class="bg-gray-700 flex space-x-2 p-5 rounded-full justify-center items-center">
+						<div class="bg-green-300 p-2  w-4 h-4 rounded-full animate-bounce blue-circle"></div>
+						<div class="bg-green-300 p-2 w-4 h-4 rounded-full animate-bounce green-circle"></div>
+						<div class="bg-green-300 p-2  w-4 h-4 rounded-full animate-bounce red-circle"></div>
+					</div>
+				</div>
 		</div>
 	</div>
 	
@@ -115,6 +115,8 @@ import Navbar from '../components/Navbar.vue'
 import Footer from '../components/Footer.vue'
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import { createToast } from 'mosha-vue-toastify';
+import 'mosha-vue-toastify/dist/style.css'
 export default {
     components:{
         Navbar,
@@ -122,6 +124,9 @@ export default {
         AppButton,
 	
     },
+	setup(){
+		
+	},
     data() {
         return {
 			categoria: '',
@@ -264,6 +269,17 @@ export default {
 				console.log(response)
 				this.getCategories();
 				this.modal = false;
+				createToast({
+					title: 'Sucesso!',
+					description: 'A categoria foi editada com sucesso!'
+					},
+					{
+					position: 'top-right',
+					transition: 'zoom',
+					hideProgressBar: 'false',
+					toastBackgroundColor: 'green',
+					timeout: 3000,
+					})
 			} catch (error) {
 				// Error 😨
 				if (error.response) {
@@ -293,12 +309,12 @@ export default {
 
 <style>
 	.blue-circle{
-		animation-delay: 0.1s;
+		animation-delay: 4s;
 	}
 	.green-circle{
-		animation-delay: 0.2s;
+		animation-delay: 5s;
 	}
 	.red-circle{
-		animation-delay: 0.3s;
+		animation-delay: 6s;
 	}
 </style>
