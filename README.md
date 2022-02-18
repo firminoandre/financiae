@@ -67,6 +67,10 @@ Here are the technologies used in the front-end of the project
 
 ![Dashboard](https://raw.githubusercontent.com/firminoandre/financiae/front-end/public/readme/categorias.png)
 
+### 5 - This is edit modal of category.
+
+![Dashboard](https://raw.githubusercontent.com/firminoandre/financiae/front-end/public/readme/editModal.png)
+
 
 ## Features
 
