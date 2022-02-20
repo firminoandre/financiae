@@ -1,6 +1,7 @@
 <template>
 <Navbar/>
-  <div class="max-w-7xl mx-auto p-4 mt-8">
+<AppCardCaixa @abrirLancamento="abrirLancamento" :saldo="$store.state.caixa.saldo"/>
+  <div class="max-w-7xl mx-auto p-4">
         <div class="flex items-center justify-between">
           <h1 class="font-bold text-white text-2xl">
             Transações
@@ -45,6 +46,7 @@
           </div>
           </form>
         </div>
+       
 
         <div class="mt-6 pb-6 flex items-center space-x-4 border-b border-gray-300">
           <div>
@@ -55,6 +57,15 @@
           <div>
             <AppFormLabel>Categoria</AppFormLabel>
             <AppFormSelect :list="categories" />
+          </div>
+          <div v-if="openLancamento" class="flex items-center space-x-4">
+            <div>
+              <AppFormLabel>Valor a adicionar</AppFormLabel>
+              <AppFormInputValue v-model="valorAddCaixa" />
+            </div>
+            <div>
+              <AppButton @click="lancarValorCaixa" class="mt-7">Adicionar ao caixa</AppButton>
+            </div>
           </div>
         </div>
           <div v-if="loading" class="flex justify-center items-center mt-12">
@@ -114,6 +125,7 @@
 
 <script>
 import AppButton from '../components/Ui/AppButton';
+import AppCardCaixa from '../components/Ui/AppCardCaixa';
 import AppFormInput from '../components/Ui/AppFormInput';
 import AppFormInputValue from '../components/Ui/AppFormInputValue';
 import AppFormLabel from '../components/Ui/AppFormLabel';
@@ -123,11 +135,13 @@ import Footer from '../components/Footer.vue'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import {VMoney} from 'v-money'
+
 export default {
   name: 'IndexPage',
   directives: {money: VMoney},
   components: {
     AppButton,
+    AppCardCaixa,
     AppFormInput,
     AppFormInputValue,
     AppFormLabel,
@@ -140,14 +154,9 @@ export default {
     return {
       transacoes: [],
       loading: true,
-        money: {
-          decimal: ',',
-          thousands: '.',
-          prefix: 'R$ ',
-          suffix: '',
-          precision: 2,
-          masked: false /* doesn't work with directive */
-        },
+      openLancamento: false,
+      valorAddCaixa: '',
+  
       categories: [],
       user_id: '',
       openTransacao: false,
@@ -163,6 +172,13 @@ export default {
   },
 
   methods: {
+    lancarValorCaixa(){
+      this.$store.commit('lancarValorCaixa', this.valorAddCaixa)
+
+    },
+    abrirLancamento(){
+      this.openLancamento = true
+    },
     async getProfile(){
 			try {
 				const response = await axios.get('http://127.0.0.1:8000/api/profile', {
