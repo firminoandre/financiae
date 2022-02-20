@@ -23,7 +23,7 @@ Here are the technologies used in the front-end of the project
 
 * js-cookie 🍪
 * SweetAlert 
-* VueX (feature)
+* VueX 
 * Vue Router
 * Axios
 
