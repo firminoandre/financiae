@@ -27,11 +27,13 @@
     "vue-router": "^4.0.12",
     "vue-sweetalert2": "^5.0.2",
     "vue-the-mask": "^0.11.1",
-    "vuejs-money": "^1.0.6"
+    "vuejs-money": "^1.0.6",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-vuex": "^4.5.15",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
     "babel-eslint": "^10.1.0",

@@ -4,6 +4,7 @@ import App from './App.vue'
 import VueSweetalert2 from 'vue-sweetalert2';
 import money from 'vuejs-money'
 import Notification from 'notiwind'
+
 //views
 import Dashboard from './logged/Dashboard'
 import Categories from './logged/Categories'
@@ -17,6 +18,8 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 
 //middlewares
 import Guard from './middleware/auth';
+
+import store from './store'
 
 
 
@@ -57,7 +60,7 @@ const router = createRouter({
 });
 
 
-const app = createApp(App)
+const app = createApp(App).use(store)
 app.use(router);
 app.mount('#app');
 app.use(VueSweetalert2);
