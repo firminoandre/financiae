@@ -11,6 +11,7 @@ export default createStore({
   mutations: {
     lancarValorCaixa(state, payload){
       localStorage.setItem('caixaSaldo', payload)
+
       state.caixa.saldo = payload
     }
   },
