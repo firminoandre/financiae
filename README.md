@@ -68,6 +68,7 @@ Here are the technologies used in the front-end of the project
 ```
 
  - Update category 
+ 
 
 ```
  - 📌 http://localhost:8000/api/categoria/{id}
