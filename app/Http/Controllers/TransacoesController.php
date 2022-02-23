@@ -82,7 +82,7 @@ class TransacoesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -94,5 +94,8 @@ class TransacoesController extends Controller
     public function destroy($id)
     {
         //
+        $transacoes = Transacoes::find($id);
+        $transacoes->delete();
+        return response()->json('transacoes deleted!');
     }
 }
