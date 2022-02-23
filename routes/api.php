@@ -45,4 +45,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/transacoes', [TransacoesController::class, 'store']);
 
     Route::get('/transacoes/{id}', [TransacoesController::class, 'index']);
+
+    Route::delete('/transacoesdelete/{id}', [TransacoesController::class, 'destroy']);
 });
