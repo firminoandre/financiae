@@ -2,6 +2,7 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
+    name: '',
     caixa: {
       saldo: localStorage.getItem('caixaSaldo')
     }
