@@ -10,7 +10,7 @@
            <svg class="w-6 h-6 text-white 3xl" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
           <span
             class="ml-2 text-xl font-bold tracking-wide text-gray-100"
-            >Economizaê</span
+            >Financiaê</span
           >
         </router-link>
         
@@ -76,7 +76,7 @@
                     </svg>
                     <span
                       class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase"
-                      >Company</span
+                      >Financiaê</span
                     >
                   </a>
                 </div>
@@ -99,51 +99,24 @@
               <nav>
                 <ul class="space-y-4">
                   <li>
-                    <a
-                      href="/"
+                    <router-link
+                      to="/"
                       aria-label="Our product"
                       title="Our product"
                       class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                      >Product</a
+                      >Inicio</router-link
                     >
                   </li>
                   <li>
-                    <a
-                      href="/"
+                    <router-link
+                      to="/entrar"
                       aria-label="Our product"
                       title="Our product"
                       class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                      >Features</a
+                      >Entrar</router-link
                     >
                   </li>
-                  <li>
-                    <a
-                      href="/"
-                      aria-label="Product pricing"
-                      title="Product pricing"
-                      class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                      >Pricing</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      aria-label="Sign in"
-                      title="Sign in"
-                      class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                      >Sign in</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="/"
-                      class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                      aria-label="Sign up"
-                      title="Sign up"
-                    >
-                      Sign up
-                    </a>
-                  </li>
+                  
                 </ul>
               </nav>
             </div>
