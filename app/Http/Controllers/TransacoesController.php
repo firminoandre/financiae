@@ -82,7 +82,23 @@ class TransacoesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //
+        $this->validate($request, [
+            'date' => 'required|max:255',
+            'valor' => 'required|max:255',
+            'descricao' => 'required|max:255',
+            'categoria' => 'required|max:255',
+        ]);
+        $transacoes = Transacoes::findOrFail( $request->id );                
+        $transacoes->date = $request->input('date');
+        $transacoes->valor = $request->input('valor');
+        $transacoes->descricao = $request->input('descricao');
+        $transacoes->categoria = $request->input('categoria');
         
+
+        if( $transacoes->save() ){
+            return new TransacoesResource( $transacoes );
+        }
     }
 
     /**
