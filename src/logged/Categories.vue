@@ -26,7 +26,7 @@
 		
       </div>
     </div>
-  </div>
+</div>
 	<section class="p-6 dark:bg-coolGray-800 dark:text-coolGray-50">
 		<form @submit.stop.prevent="cadCategories" action="" class="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid">
 			<fieldset class="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-coolGray-900">
